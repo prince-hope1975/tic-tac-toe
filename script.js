@@ -32,9 +32,7 @@ const Gameboard = ((selector, arraOfItems) => {
  const checkVar = (()=>{  
     for (let i =0; i<lines.length;i++ ){
         console.log(i)
-        const [a, b, c] = lines[i]
         if (value[a] &&( value[a] === value[b]) && (value[a] === value[c])){
-          console.log("hi",value[a])
          setTimeout(()=>{
            alert(`${value[a]} is the winner`)
            location.reload()
@@ -48,7 +46,7 @@ const Gameboard = ((selector, arraOfItems) => {
   };
   
   const renderContent = () => {
-    arraOfItems.forEach((item, index) => {
+    arraOfItems.forEach((item) => {
       item.addEventListener(
         "click",
         (e) => {
@@ -61,11 +59,8 @@ const Gameboard = ((selector, arraOfItems) => {
       );
     });
   };
-//   console.log(renderContent.winner)
 
  return {renderContent}
 })(Div, IndividualBox);
 
 window.onload = Gameboard.renderContent()
-// console.log("hi")
-// Gameboard.renderContent()
