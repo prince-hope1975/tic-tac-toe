@@ -30,23 +30,32 @@ const Gameboard = ((selector, arraOfItems) => {
     ];
     // console.log(value.length)
  const checkVar = (()=>{  
+  if (!value.includes("")){
+  setTimeout(()=> {
+    alert("It's a draw");
+    location.reload();
+  },1000)
+  }
     for (let i =0; i<lines.length;i++ ){
         console.log(i)
+        const [a, b, c] = lines[i]
         if (value[a] &&( value[a] === value[b]) && (value[a] === value[c])){
+          console.log("hi",value[a])
          setTimeout(()=>{
+           
            alert(`${value[a]} is the winner`)
            location.reload()
-           
-         }, 1000)
+         })
           return value[a];
         }
       }
       return null;
   })()
+    console.log(checkVar)
   };
   
   const renderContent = () => {
-    arraOfItems.forEach((item) => {
+    arraOfItems.forEach((item, index) => {
       item.addEventListener(
         "click",
         (e) => {
@@ -59,8 +68,11 @@ const Gameboard = ((selector, arraOfItems) => {
       );
     });
   };
+//   console.log(renderContent.winner)
 
  return {renderContent}
 })(Div, IndividualBox);
 
 window.onload = Gameboard.renderContent()
+// console.log("hi")
+// Gameboard.renderContent()
